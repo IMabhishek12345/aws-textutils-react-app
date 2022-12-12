@@ -1,35 +1,38 @@
 import React, { useState } from 'react'
 
 
-export default function About() {
-    const[myStyle,setmyStyle]=useState({
-        color: "black",
-        backgroundColor: "white"
-    });
+export default function About(props) {
+    // const[myStyle,setmyStyle]=useState({
+    //     color: "black",
+    //     backgroundColor: "white"
+    // });
     
-    const[btnText,setbtnText]=useState("Enable dark mode")
-
-    
-    
-    const toggleStyle=()=>{
-     if (myStyle.color==="white"){
-        setmyStyle({
-            color:"black",
-            backgroundColor: "white"
-        })
-        setbtnText("Enable dark mode")
-     }else{
-        setmyStyle({
-            color:"white",
-            backgroundColor: "black"
-        })
-        setbtnText("Enable light mode") 
+    // const[btnText,setbtnText]=useState("Enable dark mode")
+    let myStyle={
+       color: props.mode === "dark"? "white":"#6037c3",
+       backgroundColor: props.mode === "dark"? "#6037c3":"white"
     }
-    }
+    
+    
+    // const toggleStyle=()=>{
+    //  if (myStyle.color==="white"){
+    //     setmyStyle({
+    //         color:"black",
+    //         backgroundColor: "white"
+    //     })
+    //     setbtnText("Enable dark mode")
+    //  }else{
+    //     setmyStyle({
+    //         color:"white",
+    //         backgroundColor: "black"
+    //     })
+    //     setbtnText("Enable light mode") 
+    // }
+    // }
     return (
       
-        <div className="container"style={myStyle}>
-        <h2>About Us</h2>   
+        <div className="container">
+        <h2 style={{color: props.mode === "dark"? "white":"#6037c3"}}>About Us</h2>   
             <div className="accordion" id="accordionExample" >
          <div className="accordion-item" style={myStyle} >
             <h2 className="accordion-header" id="headingOne">
@@ -68,7 +71,7 @@ export default function About() {
             </div>
         </div>
         </div>
-          <button onClick={toggleStyle} className="btn btn-primary my-2" type="button">{btnText}</button>
+          
     </div>
   
   )
